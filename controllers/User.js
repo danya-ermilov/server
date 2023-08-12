@@ -17,9 +17,6 @@ class User {
       if (!email || !password) {
         throw new Error("empty login or password");
       }
-      if (role !== "USER") {
-        throw new Error("may be only USER");
-      }
       const hash = await bcrypt.hash(password, 5);
       const user = await UserModel.create({ email, password: hash, role });
       const token = makeJwt(user.id, user.email, user.role);
