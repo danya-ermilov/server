@@ -1,3 +1,4 @@
+/*
 import config from "dotenv/config";
 import express from "express";
 import sequelize from "./sequelize.js";
@@ -34,7 +35,8 @@ const start = async () => {
 };
 
 start();
-/*
+*/
+
 import fs from "fs";
 import https from "https"; // Импорт модуля https
 
@@ -78,4 +80,4 @@ const start = async () => {
 };
 
 start();
-*/
+
