@@ -14,15 +14,15 @@ class Sitemap {
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://www.botoginvest.com</loc>
-        <changefreq>dayly</changefreq>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://www.botoginvest.com/market</loc>
-        <changefreq>dayly</changefreq>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://www.botoginvest.com/news</loc>
-        <changefreq>dayly</changefreq>
+        <changefreq>daily</changefreq>
     </url>
     
     
@@ -31,7 +31,7 @@ class Sitemap {
         return `
             <url>
                 <loc>${`https://www.botoginvest.com/product/${prod.id}`}</loc>
-                <changefreq>dayly</changefreq>
+                <changefreq>daily</changefreq>
             </url>
         `;
       })
@@ -42,7 +42,7 @@ class Sitemap {
         return `
             <url>
                 <loc>${`https://www.botoginvest.com/author/${usr.id}`}</loc>
-                <changefreq>dayly</changefreq>
+                <changefreq>daily</changefreq>
             </url>
         `;
       })
