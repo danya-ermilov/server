@@ -13,20 +13,25 @@ class Sitemap {
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://www.botoginvest.com:5001/api/</loc>
+        <loc>https://www.botoginvest.com</loc>
+        <changefreq>dayly</changefreq>
     </url>
     <url>
-        <loc>https://www.botoginvest.com:5001/api/market</loc>
+        <loc>https://www.botoginvest.com/market</loc>
+        <changefreq>dayly</changefreq>
     </url>
     <url>
-        <loc>https://www.botoginvest.com:5001/api/news</loc>
+        <loc>https://www.botoginvest.com/news</loc>
+        <changefreq>dayly</changefreq>
     </url>
+    
     
     ${products.rows
       .map((prod) => {
         return `
             <url>
-                <loc>${`https://www.botoginvest.com:5001/api/product/${prod.id}`}</loc>
+                <loc>${`https://www.botoginvest.com/product/${prod.id}`}</loc>
+                <changefreq>dayly</changefreq>
             </url>
         `;
       })
@@ -36,7 +41,8 @@ class Sitemap {
       .map((usr) => {
         return `
             <url>
-                <loc>${`https://www.botoginvest.com:5001/api/author/${usr.id}`}</loc>
+                <loc>${`https://www.botoginvest.com/author/${usr.id}`}</loc>
+                <changefreq>dayly</changefreq>
             </url>
         `;
       })
