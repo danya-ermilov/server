@@ -47,6 +47,8 @@ import cors from "cors";
 import fileUpload from "express-fileupload";
 import router from "./routes/index.js";
 import ErrorHandler from "./middleware/ErrorHandler.js";
+import Sitemap from "../server/controllers/Sitemap.js";
+import cron from "node-cron";
 
 const PORT = process.env.PORT || 5001;
 
@@ -71,6 +73,28 @@ const start = async () => {
   try {
     await sequelize.authenticate();
     await sequelize.sync();
+
+    cron.schedule(
+      "0 6 * * *", // Расписание (раз в день в 6 утра)
+      () => {
+        Sitemap.get(); // Вызываем функцию генерации sitemap
+      },
+      {
+        scheduled: true,
+        timezone: "America/New_York",
+      }
+    );
+
+    app.get("/sitemap.xml", async (req, res) => {
+      try {
+        const sitemap = await Sitemap.get();
+        res.header("Content-Type", "application/xml");
+        res.send(sitemap);
+      } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+      }
+    });
     
     // Запуск HTTPS-сервера
     httpsServer.listen(PORT, () => console.log("Сервер запущен на порту", PORT));
